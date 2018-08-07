@@ -145,13 +145,8 @@ class TransactionFactory(ModelFactory):
                             'relationship ' % (user_cls, user_cls)
                         )
 
-                user_id = sa.Column(
-                    sa.inspect(user_cls).primary_key[0].type,
-                    sa.ForeignKey(sa.inspect(user_cls).primary_key[0]),
-                    index=True
-                )
+            user_id = sa.Column(sa.String(50))
 
-                user = sa.orm.relationship(user_cls)
 
             def __repr__(self):
                 fields = ['id', 'issued_at', 'user']
